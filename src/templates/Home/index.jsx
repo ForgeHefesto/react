@@ -26,7 +26,7 @@ export const Home = () => {
 
     setPosts(postsAndPhotos.slice(page, postsPerPage));
     setAllPosts(postsAndPhotos);
-  },[]);
+  }, []);
 
   const handleChange = (e) => {
     const { value } = e.target;
@@ -43,36 +43,38 @@ export const Home = () => {
   };
 
   useEffect(() => {
-    handleLoadPosts(0,postsPerPage);
-  }, [handleLoadPosts,postsPerPage]);
+    handleLoadPosts(0, postsPerPage);
+  }, [handleLoadPosts, postsPerPage]);
 
   return (
     <section className="container">
+      {" "}
       {!!searchValue && (
         <>
-          <h1>{searchValue}</h1>
+          <h1> {searchValue} </h1>{" "}
         </>
-      )}
+      )}{" "}
       <input
         className="text-input"
         type="search"
         value={searchValue}
         onChange={handleChange}
         placeholder="type your search"
-      ></input>
+      ></input>{" "}
       <br />
-      <br />
-      {filteredPosts.length > 0 && <Posts posts={filteredPosts}></Posts>}
-      {filteredPosts.length === 0 && <p>Não existem posts</p>}
+      <br />{" "}
+      {filteredPosts.length > 0 && <Posts posts={filteredPosts}> </Posts>}{" "}
+      {filteredPosts.length === 0 && <p> Não existem posts </p>}{" "}
       <div className="button-container">
+        {" "}
         {!searchValue && (
           <Button
             disabled={noMorePosts}
             onClick={loadMorePosts}
-            text="load more posts"
+            text="Load more posts"
           ></Button>
-        )}
-      </div>
+        )}{" "}
+      </div>{" "}
     </section>
   );
 };
